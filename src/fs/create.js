@@ -7,8 +7,8 @@ const create = async () => {
   try {
     await fs.access(filePath);
     throw new Error('FS operation failed');
-  } catch (err) {
-    if (err.code === 'ENOENT') {
+  } catch (error) {
+    if (error.code === 'ENOENT') {
       await fs.writeFile(filePath, 'I am fresh and young', 'utf8');
     } else {
       throw new Error('FS operation failed');
